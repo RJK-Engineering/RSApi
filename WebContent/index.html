@@ -5,6 +5,45 @@
 <title>Insert title here</title>
 </head>
 <body>
-yohohoho yo hohohohoho
+    <input id="message" type="text" name="message" />
+
+    <script src="dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+      require([
+          "dojo/ready",
+          "dojo/dom",
+          "dijit/registry",
+          "dojo/on",
+
+          "rjk/PopupBox"
+      ], function (ready, dom, registry, on) {
+          var box = new rjk.PopupBox({
+              // timeout: 500,
+              // showDuration: 2000,
+              // hideDuration: 2000,
+              // hideAlertDuration: 200,
+              // width: 400,
+              // height: 200,
+              // border: "1px solid black",
+              // iconSize: 20
+          });
+          ready(function(){
+              // console.log(box);
+              box.set('timeout', 2000);
+              box.message(window.location.toString());
+              box.set('timeout', 1000);
+
+              var input = dom.byId("message");
+              on(input, "keyup", function(e) {
+                  if (e.keyCode == 13) {
+                      box.message(input.value);
+                  }
+              });
+
+              // console.log(box.get('timeout'));
+          });
+      });
+  </script>
+
 </body>
 </html>
