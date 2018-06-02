@@ -18,6 +18,7 @@ public class MessageStore {
 
     public MessageStore() {
         this.file = new File(this.filePath);
+        this.nextId = 1;
         this.loadMessages();
     }
 
@@ -33,10 +34,12 @@ public class MessageStore {
     	this.storeMessages();
     }
 
-    public void createMessage(String text) {
-        this.messages.put(this.nextId, new Message(this.nextId, text));
+    public Message createMessage(String text) {
+    	Message m = new Message(this.nextId, text);
+        this.messages.put(this.nextId, m);
         this.nextId++;
     	this.storeMessages();
+    	return m;
     }
 
     public Message getMessage(int id) {
