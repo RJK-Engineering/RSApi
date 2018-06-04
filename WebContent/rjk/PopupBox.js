@@ -2,6 +2,7 @@ define([
     "dojo/_base/declare",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",
+    "dojo/store/Observable",
 
     "dojo/_base/array",
     "dojo/_base/fx",
@@ -11,14 +12,9 @@ define([
     "dojo/dom-construct",
     "dojo/dom-style",
     "dojo/mouse",
-    "dojo/on",
-
-    "dojo/store/Memory",
-    "dojo/store/JsonRest",
-    "dojo/store/Observable"
-], function (declare, _WidgetBase, _TemplatedMixin,
-    array, bfx, lang, win, attr, constr, style, mouse, on,
-    Memory, JsonRest, Observable) {
+    "dojo/on"
+], function (declare, _WidgetBase, _TemplatedMixin, Observable,
+    array, bfx, lang, win, attr, constr, style, mouse, on) {
 
     declare("rjk.PopupBox", [_WidgetBase, _TemplatedMixin], {
         timeout: 5000,
@@ -34,13 +30,13 @@ define([
         iconSize: 20,
         iconColor: "#73ad21",
 
+        store: null,
         messageContainerNode: null,
         iconNode: null,
         hideTimer: null,
 
         templateString: '<div><div class="rjk_PopupBox_messageContainer"></div></div>',
 
-        store: null,
 
         buildRendering: function(){
             this.inherited(arguments);
@@ -49,10 +45,6 @@ define([
         },
 
         postCreate: function() {
-            this.store = new JsonRest({
-                target: "/RSApi/api/messages"
-                // target: "http://localhost:8080/RSApi/api/messages"
-            });
             this.store = new Observable(this.store);
             this.store.query().observe(
                 lang.hitch(this, function (message, removedFrom, insertedInto) {
