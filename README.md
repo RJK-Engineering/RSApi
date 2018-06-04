@@ -3,11 +3,11 @@
 # API Specification
 
 ```
-Index  - GET    /message
-Create - POST   /message
-Read   - GET    /message/{id}
-Update - PUT    /message/{id}
-Delete - DELETE /message/{id}
+Index  - GET    /messages
+Create - POST   /messages
+Read   - GET    /messages/{id}
+Update - PUT    /messages/{id}
+Delete - DELETE /messages/{id}
 ```
 
 # Hypermedia links
