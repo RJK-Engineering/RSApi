@@ -29,7 +29,7 @@ public class MessageStore {
 
     public void updateMessage(int id, String text) {
     	Message m = this.getMessage(id);
-    	m.text = text;
+    	m.setText(text);
     	this.messages.put(id, m);
     	this.storeMessages();
     }
