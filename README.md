@@ -2,22 +2,19 @@
 
 # API Specification
 
-https://app.swaggerhub.com/apis/RJK-Gorilla/Messages
-
-C - POST /message - message = request.data, return /message/{id}
-R - GET /message
-R - GET /message/{id}
-U - PUT /message/{id} - updateMessage(request.data)
-D - DELETE /message/{id}
+```
+Index  - GET    /message
+Create - POST   /message
+Read   - GET    /message/{id}
+Update - PUT    /message/{id}
+Delete - DELETE /message/{id}
+```
 
 # Hypermedia links
 
 Hypertext (ht\*) is hypermedia. Hypermedia contains hyperlinks.
 
 rel = relation !
-
-``
-``
 
 # Annotations
 
