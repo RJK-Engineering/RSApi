@@ -63,8 +63,7 @@ public class MessageStore {
                 }
 	        }
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
     }
 
@@ -81,8 +80,7 @@ public class MessageStore {
             }
             writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
     }
 }
