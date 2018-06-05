@@ -17,33 +17,22 @@
           "dojo/store/JsonRest",
           "rjk/PopupBox"
       ], function (ready, dom, registry, on, JsonRest) {
+
           var box = new rjk.PopupBox({
               store: new JsonRest({
                   target: "/RSApi/api/messages"
                   // target: "http://localhost:8080/RSApi/api/messages"
               })
-              // timeout: 500,
-              // showDuration: 2000,
-              // hideDuration: 2000,
-              // hideAlertDuration: 200,
-              // width: 400,
-              // height: 200,
-              // border: "1px solid black",
-              // iconSize: 20
           });
-          ready(function(){
-              // console.log(box);
-              box.set('timeout', 2000);
-              // console.log(box.get('timeout'));
-              // box.message(window.location.toString());
+          box.set('timeout', 2000);
 
+          ready(function(){
               var input = dom.byId("message");
               on(input, "keyup", function(e) {
                   if (e.keyCode == 13) {
                       box.message(input.value);
                   }
               });
-
           });
       });
   </script>
